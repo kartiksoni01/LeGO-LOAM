@@ -21,7 +21,7 @@ An updated lidar-initial odometry package, [LIO-SAM](https://github.com/TixiaoSh
   cd ~/Downloads/ && unzip gtsam.zip -d ~/Downloads/
   cd ~/Downloads/gtsam-4.0.0-alpha2/
   mkdir build && cd build
-  cmake ..
+  cmake -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF -DGTSAM_USE_SYSTEM_EIGEN=ON ..
   sudo make install
   ```
 
