@@ -9,12 +9,9 @@
 
     <!---
     TF -->
-    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map"
-        args="0 0 0 1.570795   0        1.570795 map    camera_init 10" />
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera"
-        args="0 0 0 -1.570795 -1.570795 0        camera base_link   10" />
-    <node pkg="tf" type="static_transform_publisher" name="map_to_odom"
-        args="0 0 0 0 0 0        map odom   10" />
+    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map"  args="0 0 0.283 1.570795   0        1.570795 map    camera_init 10" />
+    <node pkg="tf" type="static_transform_publisher" name="map_to_odom"  args="0 0 0.283 0   0        0 map    odom 10" />
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera" args="0 -0.283 0 -1.570795 -1.570795 0        camera base_link   10" />
 
     <!---
     LeGO-LOAM -->
@@ -24,7 +21,7 @@
     <node pkg="lego_loam" type="transformFusion" name="transformFusion" output="screen" />
 
     <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
-        <param name="resolution" value="0.10" />
+        <param name="resolution" value="0.12" />
 
         <!-- fixed map frame (set to 'map' if SLAM or localization running!) -->
         <param name="frame_id" type="string" value="map" />
