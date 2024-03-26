@@ -4,6 +4,10 @@ project(lego_loam)
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 set(CMAKE_CXX_STANDARD 14)
 
+find_package(Boost REQUIRED COMPONENTS
+serialization timer thread chrono
+)
+
 find_package(catkin REQUIRED COMPONENTS
   tf
   roscpp
