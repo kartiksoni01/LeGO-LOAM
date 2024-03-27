@@ -2,6 +2,11 @@
 
     <!--- Sim Time -->
     <param name="/use_sim_time" value="false" />
+    <arg name="sensor_dist_x" value="0"/>
+    <arg name="sensor_dist_y" value="0"/>
+    <arg name="sensor_dist_z" value="0.283"/>
+    
+
 
     <!---
     Run Rviz-->
@@ -9,9 +14,9 @@
 
     <!---
     TF -->
-    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map"  args="0 0 0.283 1.570795   0        1.570795 map    camera_init 10" />
-    <node pkg="tf" type="static_transform_publisher" name="map_to_odom"  args="0 0 0.283 0   0        0 map    odom 10" />
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera" args="0 -0.283 0 -1.570795 -1.570795 0        camera base_link   10" />
+    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map"  args="0 0 $(arg sensor_dist_z) 1.570795 0 1.570795 map camera_init 10" />
+    <node pkg="tf" type="static_transform_publisher" name="map_to_odom"  args="0 0 0 0 0 0 map odom 10" />
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera" args="0 -$(arg sensor_dist_z) 0 -1.570795 -1.570795 0 camera base_link 10" />
 
     <!---
     LeGO-LOAM -->
@@ -27,12 +32,12 @@
         <param name="frame_id" type="string" value="map" />
 
         <!-- maximum range to integrate (speedup!) -->
-        <!-- <param name="sensor_model/max_range" value="100.0" /> -->
+        <param name="sensor_model/max_range" value="20.0" />
         <param name="pointcloud_min_z" value="-0.0" />
         <param name="pointcloud_max_z" value="20.0" />
         <param name="latch" value="false" />
-        <!-- <param name="base_frame_id" value="base_link" />
-        <param name="filter_ground" value="true" /> -->
+        <param name="base_frame_id" value="base_link" />
+        <param name="filter_ground" value="true" />
 
 
         <!-- data source to integrate (PointCloud2) -->

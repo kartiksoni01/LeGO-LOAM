@@ -1,20 +1,9 @@
-# LeGO-LOAM
-
-This repository contains code for a lightweight and ground optimized lidar odometry and mapping (LeGO-LOAM) system for ROS compatible UGVs. The system takes in point cloud  from a Velodyne VLP-16 Lidar (palced horizontally) and optional IMU data as inputs. It outputs 6D pose estimation in real-time. A demonstration of the system can be found here -> https://www.youtube.com/watch?v=O3tz_ftHV48
-<!--
-[![Watch the video](/LeGO-LOAM/launch/demo.gif)](https://www.youtube.com/watch?v=O3tz_ftHV48)
--->
-<p align='center'>
-    <img src="/LeGO-LOAM/launch/demo.gif" alt="drawing" width="800"/>
-</p>
-
-## Lidar-inertial Odometry
-
-An updated lidar-initial odometry package, [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM), has been open-sourced and available for testing.
+# LeGO-LOAM with Octomap
+Lego-LOAM forked package with added octomap configuration and optimizations to make it useable for movebase navigation
 
 ## Dependency
 
-- [ROS](http://wiki.ros.org/ROS/Installation) (tested with indigo, kinetic, and melodic)
+- [ROS](http://wiki.ros.org/ROS/Installation) (tested on noetic)
 - [gtsam](https://github.com/borglab/gtsam/releases) (Georgia Tech Smoothing and Mapping library, 4.0.0-alpha2)
   ```
   wget -O ~/Downloads/gtsam.zip https://github.com/borglab/gtsam/archive/4.0.0-alpha2.zip
@@ -36,6 +25,8 @@ cd ..
 catkin_make -j1
 ```
 When you compile the code for the first time, you need to add "-j1" behind "catkin_make" for generating some message types. "-j1" is not needed for future compiling.
+
+#### In case of any errors during compilation, refer this [link](https://blog.csdn.net/m0_62328241/article/details/130042258)
 
 ## The system
 
